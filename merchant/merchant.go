@@ -5,16 +5,14 @@ import (
 	"path/filepath"
 	"strings"
 
-	adapayCore "../adapay-core"
+	adapayCore "adapay-sdk/adapay-core"
 )
 
 type Merchant struct {
-
 	MultiMerchSysConfigs map[string]*adapayCore.MerchSysConfig
 
 	DefaultMerchSysConfig *adapayCore.MerchSysConfig
 }
-
 
 func InitDefaultMerchSysConfig(filePath string) (*Merchant, error) {
 
@@ -29,7 +27,6 @@ func InitDefaultMerchSysConfig(filePath string) (*Merchant, error) {
 
 	return ada, nil
 }
-
 
 func InitMultiMerchSysConfigs(fileDir string) (*Merchant, error) {
 
@@ -58,7 +55,6 @@ func InitMultiMerchSysConfigs(fileDir string) (*Merchant, error) {
 	return ada, nil
 }
 
-
 func (a *Merchant) HandleConfig(multiMerchConfigId ...string) *adapayCore.MerchSysConfig {
 	if multiMerchConfigId == nil {
 		return a.DefaultMerchSysConfig
@@ -67,21 +63,17 @@ func (a *Merchant) HandleConfig(multiMerchConfigId ...string) *adapayCore.MerchS
 	}
 }
 
-
 func (m *Merchant) BatchInput() *BatchInput {
 	return &BatchInput{Merchant: m}
 }
-
 
 func (a *Merchant) Entry() *Entry {
 	return &Entry{Merchant: a}
 }
 
-
 func (a *Merchant) MerProfile() *MerProfile {
 	return &MerProfile{Merchant: a}
 }
-
 
 func (a *Merchant) Version() string {
 	return "1.0.0"

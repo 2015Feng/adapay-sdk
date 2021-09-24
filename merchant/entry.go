@@ -1,7 +1,7 @@
 package merchant
 
 import (
-	adapayCore "../adapay-core"
+	adapayCore "adapay-sdk/adapay-core"
 )
 
 type entryInterface interface {
